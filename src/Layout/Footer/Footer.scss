@@ -1,0 +1,59 @@
+.ticker {
+  position: absolute;
+  width: 2000px;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-start;
+  * {
+    font-weight: bold !important;
+  }
+  li {
+    position: relative;
+    h6 {
+      padding: 0 15px;
+    }
+  }
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+.ticker-ar {
+  animation: MoveLeftRight 20s linear infinite;
+  li::before {
+    content: "";
+    width: 1px;
+    height: 15px;
+    background: #333;
+    position: absolute;
+    right: 0;
+  }
+}
+.ticker-en {
+width: 2200px;
+  animation: MoveRightLeft 20s linear infinite;
+  li::before {
+    content: "";
+    width: 1px;
+    height: 15px;
+    background: #333;
+    position: absolute;
+    right: 0;
+  }
+}
+
+@keyframes MoveLeftRight {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes MoveRightLeft {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

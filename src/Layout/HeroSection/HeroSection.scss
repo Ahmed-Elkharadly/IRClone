@@ -1,0 +1,38 @@
+.hero-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  background: url(../../assets/hero.jpg) 50% / cover no-repeat;
+  background-color: #0068b3d4;
+  background-blend-mode: soft-light;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+  }
+  .hero-statics {
+    width: 100%;
+    justify-content: baseline;
+    align-items: center;
+    margin: auto;
+    font-weight: 500 !important;
+    div {
+      justify-content: space-between;
+      align-items: baseline;
+      text-align: center;
+    }
+    .ir-box {
+      justify-content: flex-start;
+      align-items: baseline;
+      text-align: start;
+      background: #0068b3;
+      border: 10px solid #fff;
+      padding: 39px 15px;
+    }
+  }
+}
