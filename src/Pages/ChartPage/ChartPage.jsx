@@ -1,61 +1,44 @@
 import Highcharts from 'highcharts/highstock';
-
-// import 'highcharts/indicators/indicators';
-// import 'highcharts/indicators/pivot-points';
-// import 'highcharts/indicators/macd';
-// import 'highcharts/modules/exporting';
-// import 'highcharts/modules/map';
-
 import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsSolidGauge from 'highcharts/modules/solid-gauge';
 import { useEffect, useState } from 'react';
 import HighchartsReact from 'highcharts-react-official';
+import { useQuery } from 'react-query';
+import axios from 'axios';
 
 HighchartsMore(Highcharts);
 HighchartsSolidGauge(Highcharts);
 
-const Chart = () => {
-    const [data, setData] = useState()
+const ChartPage = () => {
     const [chartType, setChartType] = useState()
 
-    useEffect(() => {
-        fetch('https://demo-live-data.highcharts.com/aapl-ohlc.json')
-            .then(response => response.json())
-            .then(data => { setData(data) })
-    }, [chartType])
+    const getChartData = async () => {
+        const res = await axios.get('https://demo-live-data.highcharts.com/aapl-ohlc.json')
+        return res.data
+    }
+    const chartData = useQuery(['chartPage'], getChartData)
+    let { data } = chartData
+
+    useEffect(() => { data = chartData?.data }, [chartType])
 
     const options =
     {
-        chart: {
-            height: 400
-        },
-        rangeSelector: {
-            selected: 100
-        },
+        chart: { height: 400 },
+        rangeSelector: { selected: 100 },
         series: [{
-            name: 'AAPL Stock Price',
+            name: 'DATA',
             data: data,
             type: chartType ?? 'area',
             threshold: null,
-            tooltip: {
-                valueDecimals: 2
-            }
+            tooltip: { valueDecimals: 2 }
         }],
         responsive: {
             rules: [{
-                condition: {
-                    maxWidth: 500
-                },
+                condition: { maxWidth: 500 },
                 chartOptions: {
-                    chart: {
-                        height: 300
-                    },
-                    subtitle: {
-                        text: null
-                    },
-                    navigator: {
-                        enabled: false
-                    }
+                    chart: { height: 300 },
+                    subtitle: { text: null },
+                    navigator: { enabled: false }
                 }
             }]
         }
@@ -77,4 +60,4 @@ const Chart = () => {
     );
 };
 
-export default Chart;
+export default ChartPage;

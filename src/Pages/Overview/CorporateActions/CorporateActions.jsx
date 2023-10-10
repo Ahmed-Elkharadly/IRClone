@@ -11,6 +11,13 @@ function CorporateActions() {
             </div>
             <hr />
             <div>
+                  {/* If DATA =---=>  
+                {data?.map((item,i)=>(
+                    <div key={i} className='d-flex justify-content-between align-items-center w-100 my-3 '>
+                    <h6>{t('Previous Capital')}</h6>
+                    <h6>650.00</h6>
+                </div>
+                )} */}
                 <div className='d-flex justify-content-between align-items-center w-100 my-3 '>
                     <h6>{t('Previous Capital')}</h6>
                     <h6>650.00</h6>

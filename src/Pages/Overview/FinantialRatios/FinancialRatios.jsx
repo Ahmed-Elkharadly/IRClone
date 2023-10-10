@@ -11,6 +11,13 @@ function FinancialRatiosSection() {
             </div>
             <hr />
             <div>
+                {/* If DATA =---=>  
+                {data?.map((item,i)=>(
+                    <div key={i} className='d-flex justify-content-between align-items-center w-100 my-3 '>
+                        <h6>{t('Shares Outstanding')}</h6>
+                        <h6>315.00</h6>
+                    </div>
+                )} */}
                 <div className='d-flex justify-content-between align-items-center w-100 my-3 '>
                     <h6>{t('Shares Outstanding')}</h6>
                     <h6>315.00</h6>

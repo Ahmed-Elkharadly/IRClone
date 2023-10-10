@@ -51,20 +51,20 @@ function HeroSection() {
 
                         </h6>
                     </div>
-                    <div className="col-lg-3 col-md-3 col-12 my-lg-0 my-5">
+                    <div className="col-lg-3 col-md-3 col-12 my-lg-0 my-md-5 my-2 my-lg-5 d-lg-block d-md-block d-flex justify-content-center ">
                         <i className="bi bi-info-circle-fill m-1"></i>
                         <span className="">{t('data-delayed')}</span>
                     </div>
-                    <div className="col-lg-2 col-md-3 col-4 my-lg-0 my-5">
-                        <h1 className="fs-4">{t('price-sar')}</h1>
+                    <div className="col-lg-2 col-md-4 col-12 my-lg-0 my-md-5 my-2 my-lg-5 d-lg-block d-md-block d-flex justify-content-center ">
+                        <h1 className="fs-4 mx-3 mx-lg-0">{t('price-sar')}</h1>
                         <span className="fs-5">2.19</span>
                     </div>
-                    <div className="col-lg-3 col-4 my-lg-0 my-5">
-                        <h1 className="fs-4">{t('change-sar')}</h1>
+                    <div className="col-lg-3 col-md-4 col-12 my-lg-0 my-md-5 my-2 my-lg-5 d-lg-block d-md-block d-flex justify-content-center ">
+                        <h1 className="fs-4 mx-3 mx-lg-0">{t('change-sar')}</h1>
                         <span className="fs-5">-0.01</span>
                     </div>
-                    <div className="col-lg-1 col-2 ">
-                        <h1 className="fs-4">%</h1>
+                    <div className="col-lg-1 col-md-1 col-12 d-lg-block d-md-block d-flex justify-content-center ">
+                        <h1 className="fs-4 mx-3 mx-lg-0">%</h1>
                         <span className="fs-5">-0.45</span>
                     </div>
                 </div>

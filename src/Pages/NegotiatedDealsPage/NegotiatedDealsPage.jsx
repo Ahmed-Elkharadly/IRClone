@@ -2,6 +2,9 @@ import { t } from "i18next"
 import FilterBar from "../../Components/FilterBar/FilterBar"
 import { useEffect, useState } from "react";
 import { faker } from '@faker-js/faker';
+import SharesOutstandingsTable from "../../Components/SharesOutstandingsTable/SharesOutstandingsTable";
+import ReactPaginate from 'react-paginate';
+import Pagination  from "../../Components/Pagination/Pagination";
 
 function NegotiatedDealsPage() {
 
@@ -15,27 +18,43 @@ function NegotiatedDealsPage() {
         };
         mydata.push(item);
     }
-    const DatejsonData = { data: mydata }
     
+    const DatejsonData = { data: mydata }
     const [data, setData] = useState([])
+    
     useEffect(() => {
-        setData(DatejsonData.data);
+        setData(DatejsonData?.data)
     }, [])
+    const [paginationData, setPagenationData]= useState([])
+    useEffect(() => {
+        setPagenationData(data)
+    }, [data])
+
+        
+    const [currentItems, setCurrentItems] = useState(null);
+    const handleCurrentItems = (data) => {
+        setCurrentItems(data)
+    }
+
 
     return (
         <div className="container">
             <h4>{t("Negotiated Deals - Abdelmohsen AlHokair Group for Tourism and Development")}</h4>
             <FilterBar setData={(filterd) => setData(filterd)} data={data} />
-            <div>
-                {data?.map((obj, i) => {
-                    return (
-                        <div key={i}>
-                            <div className="d-flex justify-content-between align-items-center p-4">
-                                <h5>{obj.name}</h5>  <h6>{obj.date}</h6>
-                            </div>
-                        </div>
-                    )
-                })}
+            <div className="container table-responsive ">
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>value</th>
+                            <th>date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {data?.map((obj, i) => <SharesOutstandingsTable key={i} obj={obj} />)}
+                    </tbody>
+                </table>
+                {/* <Pagination items={paginationData} currentItems={currentItems} setCurrentItems={handleCurrentItems} /> */}
             </div>
         </div>
     )

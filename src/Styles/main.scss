@@ -54,9 +54,7 @@
 }
 .offcanvas-body {
   font-size: 0.9rem;
-  a::first-letter{
-    
-  }
+
   .active {
     transition: 0.4s ease-in-out;
     background-color: #0068b3 !important;
@@ -64,3 +62,4 @@
     initial-letter: to-upper-case($string: "");
   }
 }
+

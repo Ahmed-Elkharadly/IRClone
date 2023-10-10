@@ -1,28 +1,16 @@
-import i18next from "i18next"
+import { t } from "i18next"
 
-function SharesOutstandingsTable({ data }) {
-  console.log(data)
-  const { language } = i18next
+function SharesOutstandingsTable({ obj }) {
   return (
-    <table className="table table-striped " >
-      <thead className="table-primary border">
-        <tr>
-          {/* <th className="datails">
-            {language === 'ar' ? data?.nameAr : data?.nameEn}
-          </th>
-
-          {data?.values?.map((group, i) => <th key={i}>{group?.year}</th>)} */}
-
-        </tr>
-
-      </thead>
-
-      <tbody >
-
-
-
-      </tbody>
-    </table>
+      <tr className="p-4">
+        <td> <h5>{obj.name}</h5> </td>
+        <td>
+          <h4 className="d-flex"> {t('value')}:
+            <p className="mx-2 "> {obj.value} </p>
+          </h4>
+        </td>
+        <td> <h6>{obj.date}</h6></td>
+      </tr>
   )
 }
 

@@ -11,17 +11,17 @@ import CompanyOverview from "./Pages/Overview/CompanyOverview/CompanyOverview";
 import MarketData from "./Pages/Overview/MarketData/MarketData";
 import FinancialRatiosSection from "./Pages/Overview/FinantialRatios/FinancialRatios";
 import CorporateActions from "./Pages/Overview/CorporateActions/CorporateActions";
-import Chart from "./Pages/Chart/Chart";
-import FinancialRatiosPage from "./Pages/FinancialRatios/FinancialRatiosPage";
+import ChartPage from "./Pages/ChartPage/ChartPage";
+import FinancialRatiosPage from "./Pages/FinancialRatiosPage/FinancialRatiosPage";
 import NegotiatedDealsPage from './Pages/NegotiatedDealsPage/NegotiatedDealsPage';
+
 function App() {
   const { i18n } = useTranslation();
   const [languageClass, setLanguageClass] = useState('');
 
   useEffect(() => {
     const updateLanguageClass = () => {
-      const newLanguageClass = i18n.language === 'ar' ? 'ArContainer' : 'EnContainer';
-      setLanguageClass(newLanguageClass);
+      setLanguageClass(i18n.language === 'ar' ? 'ArContainer' : 'EnContainer');
     };
     updateLanguageClass();
     i18n.on('languageChanged', updateLanguageClass);
@@ -45,9 +45,10 @@ function App() {
           </Route>
 
           <Route path='profile' element={<Profile />} />
-          <Route path='chart' element={<Chart />} />
+          <Route path='chart' element={<ChartPage />} />
           <Route path='financialRatios' element={<FinancialRatiosPage />} />
           <Route path='negotiatedDeals' element={<NegotiatedDealsPage />} />
+
         </Routes>
       </Aside>
       <Footer />

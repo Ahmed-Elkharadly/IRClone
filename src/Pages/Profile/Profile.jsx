@@ -1,7 +1,10 @@
+import { t } from "i18next"
 
 function Profile() {
   return (
-    <div>Profile</div>
+    <div className="container">
+      <h2>{t('Profile')}</h2>
+    </div>
   )
 }
 

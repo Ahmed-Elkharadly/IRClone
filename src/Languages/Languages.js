@@ -5,7 +5,6 @@ export const translation = {
     "price-sar": "Price SAR",
     "change-sar": "Change SAR",
     ir: "Investor Relations",
-
   },
   ar: {
     Arabic: "Arabic",
@@ -59,7 +58,13 @@ export const translation = {
     "Previous Capital": "رأس المال السابق",
     "Previous No. of Shares (M)": "عدد الأسهم قبل التغير",
     "Read More": "المزيد",
-    "Negotiated Deals - Abdelmohsen AlHokair Group for Tourism and Development": "الصفقات الخاصة - مجموعات عبد المحسن الحكير للسياحة",
-    "Details":'التفاصيل'
+    "Negotiated Deals - Abdelmohsen AlHokair Group for Tourism and Development":
+      "الصفقات الخاصة - مجموعات عبد المحسن الحكير للسياحة",
+    Details: "التفاصيل",
+    currency: "العملة",
+    USD: " دولار امريكي",
+    SAR: "ريال سعودي",
+    Annual: "سنوي",
+    Quarter: "ربع سنوي",
   },
 };

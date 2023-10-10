@@ -9,18 +9,20 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'rsuite/dist/rsuite-no-reset.min.css';
 import 'rsuite/dist/rsuite.min.css';
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 import './i18.js'
 const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <Suspense fallback='loading'>
           <App />
         </Suspense>
+        <ReactQueryDevtools />
       </QueryClientProvider>
     </BrowserRouter>
-  </React.StrictMode>,
+  ,
 )
