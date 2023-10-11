@@ -11,7 +11,7 @@ const ChartModal = ({ data, isOpen }) => {
   const desiredYears = ["2019", "2020", "2021", "2022"];
   const [chartOptions, setChartOptions] = useState({});
   const { language } = i18next
-
+  
   useEffect(() => {
     if (isOpen) {
       const myValues = data?.values?.map((val) => Number(parseFloat(val.value).toFixed(2)));

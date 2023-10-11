@@ -1,17 +1,20 @@
 import { NavLink } from 'react-router-dom'
 import i18next, { t } from 'i18next'
+
 function Aside({ children }) {
     const { language } = i18next
+    
     return (
         <div className='container-lg mb-5' >
-            <div className='row'>
-                <div className='col-12 col-lg-3 m-0 p-0 d-flex justify-content-end shadow-sm h-100 '>
+            <div className='row' >
+                {/* Nav */}
+                <div className='col-12 col-lg-3 col-md-12 m-0 p-0 d-flex justify-content-end shadow-sm h-100 '>
                     <button className="d-lg-none navbar-toggler bi bi-list border-0 p-2 py-0 rounded fs-3 m-3" aria-expanded="false" data-bs-toggle="offcanvas" aria-controls="alhokaiSidebar" aria-label="Toggle navigation" data-bs-target="#alhokaiSidebar" ></button>
                     <div className="offcanvas offcanvas-start show-lg" role="dialog" tabIndex="-1" aria-modal="true" aria-label="Close" id="alhokaiSidebar" data-bs-dismiss="offcanvas" aria-labelledby="alhokaiSidebarLabel">
                         <div className="offcanvas-header d-lg-none">
                             <button className="btn-close p-0 " data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
-                        <div className="offcanvas-body  fs-6 py-0 ">
+                        <div className="offcanvas-body fs-6 py-0 ">
                             <ul className="navbar-nav w-100 p-0" >
                                 <NavLink className="nav-link p-2" to={`/overview?lang=${language}`}>{t('Overview')}</NavLink>
                                 <NavLink className="nav-link p-2" to={`/profile?lang=${language}`}>{t('Profile')}</NavLink>
@@ -34,11 +37,13 @@ function Aside({ children }) {
                         </div>
                     </div>
                 </div>
-                <section className='col-lg-9 col-12 mt-3'>
+                {/* Rest Of Components */}
+                <section className='col-lg-9 col-md-12 col-12 mt-3 ' >
                     {children}
                 </section>
+
             </div>
-        </div >
+        </div>
     )
 }
 

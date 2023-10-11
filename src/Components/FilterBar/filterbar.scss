@@ -1,55 +1,21 @@
 .filterBar {
-  background-color: #0068b3;
-  color: #fff !important;
+  color: #000 !important;
+  max-width: 100%;
+  min-width: 100%;
+  label {
+    font-weight: 800 !important;
+  }
 }
-// .react-date-picker__clear-button {
-//   display: none !important;
-// }
-// .react-date-picker__calendar-button {
-//   content: "";
-// }
-// .react-date-picker__wrapper {
-//   background-color: #fff;
-//   color: #0068b3 !important;
-// }
-// .react-date-picker__inputGroup {
-//   padding: 5px 10px !important;
-// }
-// .react-date-picker__calendar-button {
-//   color: #0068b3 !important;
-//   padding: 5px 10px !important;
-//   margin: 0 !important;
-//   width: 15%;
-// }
-// .react-date-picker__calendar-button:hover {
-//   background-color: #0068b313;
-// }
-// .react-calendar{
-//     background-color: #424d65 !important;
-//     border: none;
-//     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-//     button:hover,button:focus{
-//         color: #0068b3 !important ;
-//     }
-// }
-
-// .rs-picker-menu {
-//   position: absolute !important;
-//   top: 50% !important;
-//   left: 50% !important;
-//   transform: translate(-50%, -50%) !important;
-//   z-index: 999999 !important;
-//   width: 100% !important;
-// }
 @media screen and (max-width: 575px) {
   .rs-picker-menu {
-    width: 400px !important;
+    width: 350px !important;
+    z-index: 9999 !important;
   }
   .rs-stack {
     display: grid !important;
-    width: 400px !important;
+    width: 350px !important;
     .rs-stack-item {
-      width: 400px !important;
+      width: 350px !important;
     }
   }
   .rs-picker-daterange-content {
@@ -57,35 +23,96 @@
   }
   .rs-picker-daterange-calendar-group {
     display: grid;
-    min-width: unset !important;
+    min-width: 100% !important;
     height: 100% !important;
     gap: 0 !important;
     align-items: start !important;
     .rs-calendar {
       grid-template-columns: 12;
-      width: 400px !important;
+      width: 350px !important;
       border-right: unset !important ;
     }
   }
   @media screen and (max-width: 443px) {
     .rs-picker-menu {
-      scale: 0.8;
-      top: 45% !important;
-      left: -5% !important;
+      width: 70vw !important;
+      min-width: none !important;
+      left: 9% !important;
+    }
+    .rs-stack {
+      min-width: none !important;
+      width: 70vw !important;
+      .rs-stack-item {
+        width: 70vw !important;
+        min-width: none !important;
+      }
+    }
+    .rs-picker-daterange-calendar-group {
+      .rs-calendar {
+        width: 70vw !important;
+        min-width: none !important;
+      }
     }
   }
-  @media screen and (max-width: 370px) {
-    .rs-picker-menu {
-      scale: 0.7;
-      top: 45% !important;
-      left: -15% !important;
+}
+
+@media screen and (max-width: 370px) {
+  .rs-picker-menu {
+    width: 85vw !important;
+  }
+  .rs-stack {
+    width: 85vw !important;
+    .rs-stack-item {
+      width: 85vw !important;
     }
   }
-  @media screen and (max-width: 294px) {
-    .rs-picker-menu {
-      scale: 0.5;
-      top: 45% !important;
-      left: -25% !important;
+  .rs-picker-daterange-calendar-group {
+    .rs-calendar {
+      width: 85vw !important;
     }
+  }
+}
+@media screen and (max-width: 300px) {
+  .rs-picker-menu {
+    width: 95vw !important;
+    left: 0 !important;
+  }
+  .rs-stack {
+    width: 95vw !important;
+    .rs-stack-item {
+      width: 95vw !important;
+    }
+  }
+  .rs-picker-daterange-calendar-group {
+    .rs-calendar {
+      width: 95vw !important;
+    }
+  }
+}
+@media screen and (max-width: 265px) {
+  .rs-picker-menu {
+    top: 77.8% !important;
+    width: 120% !important;
+    left: -5% !important;
+    scale: 0.8;
+  }
+  .rs-stack {
+    width: 95vw !important;
+    .rs-stack-item {
+      width: 95vw !important;
+    }
+  }
+  .rs-picker-daterange-calendar-group {
+    .rs-calendar {
+      width: 95vw !important;
+    }
+  }
+}
+@media screen and (max-width: 265px) {
+  .rs-picker-menu {
+    top: 79% !important;
+    width: 120vw !important;
+    left: -13% !important;
+    // scale: 0.8;
   }
 }

@@ -1,7 +1,7 @@
 import i18next, { t } from "i18next"
 import { NavLink, Outlet } from "react-router-dom"
 import './overview.scss'
-function Overview() {
+function OverviewPage() {
     const { language } = i18next
     return (
         <div className="overview">
@@ -15,4 +15,4 @@ function Overview() {
     )
 }
 
-export default Overview
+export default OverviewPage

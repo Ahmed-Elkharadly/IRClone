@@ -1,32 +1,31 @@
+import { t } from 'i18next';
 import React, { useEffect, useState } from 'react'
 import ReactPaginate from 'react-paginate';
 
-function Pagination(setCurrentItems, items) {
+function Pagination({ setCurrentItems, items, itemsCount }) {
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
-    console.log(items);
     useEffect(() => {
-        const endOffset = itemOffset + 10;
-        console.log(`${items}Loading items from ${itemOffset} to ${endOffset}`);
+        const endOffset = itemOffset + itemsCount;
+        console.log(`${'ss'}Loading items from ${itemOffset} to ${endOffset}`);
         setCurrentItems(items?.slice(itemOffset, endOffset));
-        setPageCount(Math.ceil(items?.length / 10));
+        setPageCount(Math.ceil(items?.length / itemsCount));
     }, [itemOffset, items]);
 
-    // Invoke when user click to request another page.
     const handlePageClick = (event) => {
-        const newOffset = event.selected * 10 % data.length;
+        const newOffset = event.selected * itemsCount % items.length;
         console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
         setItemOffset(newOffset);
     };
 
     return (
         <ReactPaginate
-            nextLabel="next >"
+            nextLabel={t("next >")}
             onPageChange={handlePageClick}
-            pageRangeDisplayed={3}
+            pageRangeDisplayed={1}
             marginPagesDisplayed={2}
             pageCount={pageCount}
-            previousLabel="< previous"
+            previousLabel={t("< prev")}
             pageClassName="page-item"
             pageLinkClassName="page-link"
             previousClassName="page-item"

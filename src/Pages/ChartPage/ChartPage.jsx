@@ -9,20 +9,18 @@ import axios from 'axios';
 HighchartsMore(Highcharts);
 HighchartsSolidGauge(Highcharts);
 
+const ChartAPI = async () => {
+    const res = await axios.get('https://demo-live-data.highcharts.com/aapl-ohlc.json')
+    return res.data
+}
+
 const ChartPage = () => {
     const [chartType, setChartType] = useState()
 
-    const getChartData = async () => {
-        const res = await axios.get('https://demo-live-data.highcharts.com/aapl-ohlc.json')
-        return res.data
-    }
-    const chartData = useQuery(['chartPage'], getChartData)
+    const chartData = useQuery(['chartPage'], ChartAPI)
     let { data } = chartData
 
-    useEffect(() => { data = chartData?.data }, [chartType])
-
-    const options =
-    {
+    const options = {
         chart: { height: 400 },
         rangeSelector: { selected: 100 },
         series: [{

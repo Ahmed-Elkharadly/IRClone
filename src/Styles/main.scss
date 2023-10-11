@@ -4,14 +4,22 @@
 @import "../Layout/Footer/Footer.scss";
 @import "../Layout/HeroSection/HeroSection.scss";
 
+@font-face {
+  font-family: "CairoBold"; // Specify your desired font-family name
+  src: url("../assets/fonts/Ar/Cairo-Bold.ttf") format("truetype"); // Adjust the path to your TTF font file
+  font-weight: normal;
+  font-style: normal;
+}
 #root {
   width: 100dvw;
   margin: 0;
   padding: 0;
+  max-width: 100%;
   min-height: 100vh;
 }
 
 .ArContainer {
+  font-family: CairoBold !important;
   direction: rtl;
   .offcanvas.offcanvas-start {
     left: unset !important;
@@ -25,8 +33,49 @@
   .accordion-button:focus {
     box-shadow: unset !important;
   }
+  /*pagenation*/
+  .pagination {
+    .page-item:first-child {
+      .page-link {
+        border-top-left-radius: unset;
+        border-bottom-left-radius: unset;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        min-width: 90px;
+      }
+    }
+    .page-item:last-child {
+      .page-link {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-top-right-radius: unset;
+        border-bottom-right-radius: unset;
+        min-width: 85px;
+      }
+    }
+  }
+  .rs-picker-toggle-value,
+  .rs-picker-toggle-placeholder {
+    display: flex !important;
+    justify-content: flex-start;
+    max-width: 100% !important;
+  }
 }
+.pagination {
+  @media screen and (max-width: 390px) {
+    scale: 0.7;
+  }
+  @media screen and (max-width: 298px) {
+    scale: 0.5;
+  }
 
+  .page-item:first-child,
+  .page-item:last-child {
+    .page-link {
+      min-width: 80px;
+    }
+  }
+}
 /** Aside **/
 @media screen and (min-width: 992px) {
   .offcanvas {
@@ -63,3 +112,17 @@
   }
 }
 
+.table {
+  tr {
+    min-width: 100px !important;
+    max-width: 100px !important;
+    td {
+      min-width: 100px !important;
+      max-width: 100px !important;
+
+      @media screen and (max-width: 600px) {
+        font-size: 0.7rem !important;
+      }
+    }
+  }
+}

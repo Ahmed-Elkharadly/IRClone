@@ -2,60 +2,61 @@ import { t } from "i18next"
 import FilterBar from "../../Components/FilterBar/FilterBar"
 import { useEffect, useState } from "react";
 import { faker } from '@faker-js/faker';
-import SharesOutstandingsTable from "../../Components/SharesOutstandingsTable/SharesOutstandingsTable";
-import ReactPaginate from 'react-paginate';
-import Pagination  from "../../Components/Pagination/Pagination";
+import Pagination from "../../Components/Pagination/Pagination";
+
+// Creating Fake Data as fetching data from API
+const mydata = [];
+for (let i = 1; i <= 100; i++) {
+    const item = {
+        id: i,
+        name: faker.person.fullName(),
+        value: faker.number.int(),
+        date: faker.date.past().toISOString().split("T")[0],
+    };
+    mydata.push(item);
+}
+const DatejsonData = { data: mydata }
+
 
 function NegotiatedDealsPage() {
-
-    const mydata = [];
-    for (let i = 1; i <= 100; i++) {
-        const item = {
-            id: i,
-            name: faker.person.fullName(),
-            value: faker.number.int(),
-            date: faker.date.past().toISOString().split("T")[0],
-        };
-        mydata.push(item);
-    }
-    
-    const DatejsonData = { data: mydata }
     const [data, setData] = useState([])
-    
+
     useEffect(() => {
         setData(DatejsonData?.data)
     }, [])
-    const [paginationData, setPagenationData]= useState([])
-    useEffect(() => {
-        setPagenationData(data)
-    }, [data])
 
-        
     const [currentItems, setCurrentItems] = useState(null);
-    const handleCurrentItems = (data) => {
-        setCurrentItems(data)
-    }
+    const handleCurrentItems = (data) => setCurrentItems(data)
+
 
 
     return (
-        <div className="container">
-            <h4>{t("Negotiated Deals - Abdelmohsen AlHokair Group for Tourism and Development")}</h4>
-            <FilterBar setData={(filterd) => setData(filterd)} data={data} />
-            <div className="container table-responsive ">
-                <table className="table">
-                    <thead>
+        <div className="contianer" >
+            <h3 className="p-2">{t("Negotiated Deals - Abdelmohsen AlHokair Group for Tourism and Development")}</h3>
+            <FilterBar setData={(filterd) => setData(filterd)} setCurrentItems={handleCurrentItems} data={data} />
+
+            <div className="table-responsive">
+                <table className="table  w-100">
+                    <thead className="table-primary">
                         <tr>
-                            <th>Name</th>
-                            <th>value</th>
-                            <th>date</th>
+                            <th className="fs-6">{t('Name')}</th>
+                            <th className="fs-6">{t('Value')}</th>
+                            <th className="fs-6">{t('Date')}</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {data?.map((obj, i) => <SharesOutstandingsTable key={i} obj={obj} />)}
+                    <tbody >
+                        {currentItems?.map((obj, i) =>
+                            <tr key={i}>
+                                <td> {obj.name} </td>
+                                <td>  {obj.value} </td>
+                                <td> {obj.date}</td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
-                {/* <Pagination items={paginationData} currentItems={currentItems} setCurrentItems={handleCurrentItems} /> */}
             </div>
+
+            <Pagination items={data} setCurrentItems={handleCurrentItems} itemsCount={7} />
         </div>
     )
 }

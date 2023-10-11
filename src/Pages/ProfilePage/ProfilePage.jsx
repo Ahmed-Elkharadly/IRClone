@@ -1,11 +1,11 @@
 import { t } from "i18next"
 
-function Profile() {
+function ProfilePage() {
   return (
     <div className="container">
-      <h2>{t('Profile')}</h2>
+      <h2>{t('ProfilePage')}</h2>
     </div>
   )
 }
 
-export default Profile
+export default ProfilePage

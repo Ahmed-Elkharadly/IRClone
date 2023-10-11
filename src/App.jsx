@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 import Aside from "./Layout/Aside/Aside";
 import Footer from "./Layout/Footer/Footer";
 import { Route, Routes } from "react-router-dom";
-import Overview from "./Pages/Overview/overview";
-import Profile from "./Pages/Profile/Profile";
-import CompanyOverview from "./Pages/Overview/CompanyOverview/CompanyOverview";
-import MarketData from "./Pages/Overview/MarketData/MarketData";
-import FinancialRatiosSection from "./Pages/Overview/FinantialRatios/FinancialRatios";
-import CorporateActions from "./Pages/Overview/CorporateActions/CorporateActions";
+import OverviewPage from "./Pages/OverviewPage/OverviewPage";
+import ProfilePage from "./Pages/ProfilePage/ProfilePage";
+import CompanyOverview from "./Pages/OverviewPage/CompanyOverview/CompanyOverview";
+import MarketData from "./Pages/OverviewPage/MarketData/MarketData";
+import FinancialRatiosSection from "./Pages/OverviewPage/FinantialRatios/FinancialRatios";
+import CorporateActions from "./Pages/OverviewPage/CorporateActions/CorporateActions";
 import ChartPage from "./Pages/ChartPage/ChartPage";
 import FinancialRatiosPage from "./Pages/FinancialRatiosPage/FinancialRatiosPage";
 import NegotiatedDealsPage from './Pages/NegotiatedDealsPage/NegotiatedDealsPage';
@@ -32,19 +32,19 @@ function App() {
   }, [i18n.language]);
 
   return (
-    <div className={languageClass}>
+    <div className={`${languageClass}`}>
       < HeroSection />
       <Aside>
         <Routes>
 
-          <Route path='overview' element={<Overview />}>
+          <Route path='overview' element={<OverviewPage />}>
             <Route path="" element={<CompanyOverview />} />
             <Route path='market-data' element={<MarketData />} />
             <Route path='financial-ratios' element={<FinancialRatiosSection />} />
             <Route path='corporate-actions' element={<CorporateActions />} />
           </Route>
 
-          <Route path='profile' element={<Profile />} />
+          <Route path='profile' element={<ProfilePage />} />
           <Route path='chart' element={<ChartPage />} />
           <Route path='financialRatios' element={<FinancialRatiosPage />} />
           <Route path='negotiatedDeals' element={<NegotiatedDealsPage />} />

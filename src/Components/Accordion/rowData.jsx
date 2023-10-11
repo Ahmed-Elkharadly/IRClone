@@ -5,11 +5,15 @@ import i18next from "i18next";
 const RowData = ({ data, openChartModal, currency, desiredYears }) => {
   const { language } = i18next
   const [vals, setVals] = useState('')
-
+  // Converting the curency
   useEffect(() => {
     let newValues = data.values?.map((obj) => {
       if (data?.ratioName === "SharesOutstandings1") {
         return obj
+      } 
+      
+      if (currency === '') {
+        return
       } else if (currency === 'usd') {
         obj.value = obj.value / 3.75
         return obj
@@ -21,6 +25,7 @@ const RowData = ({ data, openChartModal, currency, desiredYears }) => {
     setVals({ ...data, values: newValues })
   }, [currency])
 
+  // extract the values from the objects and update during data changing
   useEffect(() => {
     data.values = data?.values?.filter(value => desiredYears.includes(value.year))
     setVals(data)
