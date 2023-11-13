@@ -27,7 +27,9 @@ function NegotiatedDealsPage() {
 
     const [currentItems, setCurrentItems] = useState(null);
     const handleCurrentItems = (data) => setCurrentItems(data)
-
+    useEffect(() => {
+        console.log(currentItems)
+    }, [data])
 
 
     return (
@@ -45,13 +47,20 @@ function NegotiatedDealsPage() {
                         </tr>
                     </thead>
                     <tbody >
-                        {currentItems?.map((obj, i) =>
+                        {currentItems?.length ? currentItems?.map((obj, i) =>
                             <tr key={i}>
                                 <td> {obj.name} </td>
                                 <td>  {obj.value} </td>
                                 <td> {obj.date}</td>
                             </tr>
-                        )}
+                        ) : <tr>
+                            <td colSpan={3}>
+                               <h3 className="text-center my-2">
+                                 {t("No data found")}
+                                </h3>
+                            </td>
+                        </tr>
+                        }
                     </tbody>
                 </table>
             </div>

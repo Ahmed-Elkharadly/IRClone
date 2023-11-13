@@ -13,6 +13,7 @@ function HeroSection() {
     const changeLanguage = (language) => {
         i18next.changeLanguage(language)
         navigate(`${location.pathname}?lang=${language}`)
+        
     }
 
     return (
@@ -34,13 +35,13 @@ function HeroSection() {
 
             <section className="hero-statics text-light container ">
                 <div className="row">
-                    <div className="col-lg-3 col-md-2 d-lg-block d-none ir-box fw-bolder px-3">
+                    <div className="col-lg-3 col-md-2 d-lg-block d-none ir-box fw-bolder px-3 rounded-top-4">
                         <h1 >{t('ir')}</h1>
                         <h6><Link className="text-light fw-bolder" to={'tel:123456789'}> <i className="bi bi-telephone-fill m-1"></i> {'+20123456789'}</Link></h6>
                         <h6><Link className="text-light fw-bolder" to={'mailto:info@mail.com'}><i className="bi bi-envelope-at-fill m-1"></i> {'info@mail.com'}</Link></h6>
                     </div>
 
-                    <div className="col-lg-3 col-md-3 col-12 my-md-5 my-2 my-lg-5 d-lg-block d-md-block p-0 d-flex justify-content-center p-0">
+                    <div className="col-lg-3 col-md-3 col-12 my-md-5 my-2 my-lg-5 d-lg-block d-md-block p-0 d-flex justify-content-center p-0 ">
                         <i className="bi bi-info-circle-fill mx-3 mx-lg-0 "></i> <span className="">{t('data-delayed')}</span>
                     </div>
                     <div className="col-lg-2 col-md-4 col-12 my-md-5 my-2 my-lg-5 d-lg-block d-md-block d-flex justify-content-center p-0">

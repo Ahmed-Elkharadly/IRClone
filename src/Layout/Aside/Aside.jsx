@@ -3,7 +3,7 @@ import i18next, { t } from 'i18next'
 
 function Aside({ children }) {
     const { language } = i18next
-    
+
     return (
         <div className='container-lg mb-5' >
             <div className='row' >
@@ -33,13 +33,16 @@ function Aside({ children }) {
                                 <NavLink className="nav-link p-2" to={`/analystCoverage?lang=${language}`}>{t('Analyst Coverage')}</NavLink>
                                 <NavLink className="nav-link p-2" to={`/disclosures?lang=${language}`}>{t('Disclosures')}</NavLink>
                                 <NavLink className="nav-link p-2" to={`/subscriptionCenter?lang=${language}`}>{t('Subscription Center')}</NavLink>
+                                <NavLink className="nav-link p-2 mb-2" to={`/contact?lang=${language}`}>{t('contact')}</NavLink>
                             </ul>
                         </div>
                     </div>
                 </div>
                 {/* Rest Of Components */}
                 <section className='col-lg-9 col-md-12 col-12 mt-3 ' >
-                    {children}
+                    <div className='container-lg'>
+                        {children}
+                    </div>
                 </section>
 
             </div>

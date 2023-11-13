@@ -75,5 +75,6 @@ export const translation = {
     "search by value": "ابحث بالقيمة",
     Search: "بحث",
     "Pick a range": "قم بتحديد المدة الزمنية",
+    "No data found": "لا يوجد بيانات",
   },
 };

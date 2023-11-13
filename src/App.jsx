@@ -14,6 +14,7 @@ import CorporateActions from "./Pages/OverviewPage/CorporateActions/CorporateAct
 import ChartPage from "./Pages/ChartPage/ChartPage";
 import FinancialRatiosPage from "./Pages/FinancialRatiosPage/FinancialRatiosPage";
 import NegotiatedDealsPage from './Pages/NegotiatedDealsPage/NegotiatedDealsPage';
+import { ContactUs } from './Pages/Contact/Contact';
 
 function App() {
   const { i18n } = useTranslation();
@@ -48,6 +49,7 @@ function App() {
           <Route path='chart' element={<ChartPage />} />
           <Route path='financialRatios' element={<FinancialRatiosPage />} />
           <Route path='negotiatedDeals' element={<NegotiatedDealsPage />} />
+          <Route path='contact' element={<ContactUs />} />
 
         </Routes>
       </Aside>
