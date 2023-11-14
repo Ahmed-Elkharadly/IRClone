@@ -5,15 +5,6 @@ import { useEffect } from 'react'
 function Aside({ children }) {
     const { language } = i18next
     
-    useEffect(()=>{
-        window?.addEventListener('message', event => {
-            if (event.data.type === 'requestHeight') {
-                // Respond with the content height
-                const contentHeight = document.body.scrollHeight;
-                window?.parent?.postMessage({ type: 'contentHeight', height: contentHeight }, 'http://127.0.0.1:5500');
-            }
-        });
-    },[window?.location])
 
     return (
         <div className='container-lg mb-5' >
