@@ -21,17 +21,19 @@ function App() {
   const [languageClass, setLanguageClass] = useState("");
 
   useEffect(() => {
-    window?.addEventListener("message", (event) => {
+    // Listen for the request for the iframe's height
+    window.addEventListener("message", (event) => {
+      console.log(document.body.scrollHeight)
       if (event.data.type === "requestHeight") {
         // Respond with the content height
         const contentHeight = document.body.scrollHeight;
-        window?.parent?.postMessage(
+        window.parent.postMessage(
           { type: "contentHeight", height: contentHeight },
           "http://127.0.0.1:5500"
         );
       }
     });
-  }, [window?.location]);
+  }, [document.body.scrollHeight]);
 
   useEffect(() => {
     const updateLanguageClass = () => {
