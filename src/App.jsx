@@ -33,6 +33,7 @@ function App() {
   }, [i18n.language]);
 
   // ***********************************Testing Cases**************************
+
   const elemRef = useRef(null);
   const [pageheight, setHeight] = useState(undefined);
 
@@ -47,7 +48,7 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.addEventListener("message", (event) => {
       // Respond with the content height
       window.parent.postMessage(
@@ -59,10 +60,10 @@ function App() {
   }, [pageheight]);
 
   return (
-    <div className={`${languageClass}`}>
+    <div className={`${languageClass}`} ref={elemRef}>
       <HeroSection />
       <Aside>
-        <div ref={elemRef}>
+        <div>
           <Routes>
             <Route path="overview" element={<OverviewPage />}>
               <Route path="" element={<CompanyOverview />} />
