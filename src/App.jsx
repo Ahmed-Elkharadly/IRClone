@@ -34,7 +34,7 @@ function App() {
 
   // ***********************************Testing Cases**************************
   const elemRef = useRef(null);
-  const [height, setHeight] = useState(undefined);
+  const [pageheight, setHeight] = useState(undefined);
 
   useEffect(() => {
     if (!elemRef.current) return;
@@ -50,14 +50,13 @@ function App() {
   useEffect(() => {
     window.addEventListener("message", (event) => {
       // Respond with the content height
-      const contentHeight = elemRef?.current?.offsetHeight;
       window.parent.postMessage(
-        { type: "contentHeight", height: contentHeight },
+        { type: "contentHeight", height: pageheight },
         "http://127.0.0.1:5500"
       );
     });
-    console.log("Hello", elemRef.current.offsetHeight);
-  }, [elemRef?.current?.offsetHeight]);
+    console.log("Hello", pageheight);
+  }, [pageheight]);
 
   return (
     <div className={`${languageClass}`}>
