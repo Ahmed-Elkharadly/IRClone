@@ -33,7 +33,7 @@ function App() {
         );
       }
     });
-  }, [document.body.scrollHeight]);
+  }, [document.body.scrollHeight, window.innerHeight]);
 
   useEffect(() => {
     const updateLanguageClass = () => {
