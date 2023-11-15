@@ -1,7 +1,7 @@
 import "./Styles/main.scss";
 import HeroSection from "./Layout/HeroSection/HeroSection";
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Aside from "./Layout/Aside/Aside";
 import Footer from "./Layout/Footer/Footer";
 import { Route, Routes } from "react-router-dom";
@@ -21,21 +21,6 @@ function App() {
   const [languageClass, setLanguageClass] = useState("");
 
   useEffect(() => {
-    // Listen for the request for the iframe's height
-    window.addEventListener("message", (event) => {
-      console.log(document.body.scrollHeight)
-      if (event.data.type === "requestHeight") {
-        // Respond with the content height
-        const contentHeight = document.body.scrollHeight;
-        window.parent.postMessage(
-          { type: "contentHeight", height: contentHeight },
-          "http://127.0.0.1:5500"
-        );
-      }
-    });
-  }, [document.body.scrollHeight, window.innerHeight]);
-
-  useEffect(() => {
     const updateLanguageClass = () => {
       setLanguageClass(i18n.language === "ar" ? "ArContainer" : "EnContainer");
     };
@@ -47,27 +32,56 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i18n.language]);
 
+  // ***********************************Testing Cases**************************
+  const elemRef = useRef(null);
+  const [height, setHeight] = useState(undefined);
+
+  useEffect(() => {
+    if (!elemRef.current) return
+    const resizeListener = () => {
+      setHeight(elemRef.current.offsetHeight);
+    };
+    const observer = new ResizeObserver(resizeListener);
+    observer.observe(elemRef.current);
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "requestHeight") {
+        // Respond with the content height
+        const contentHeight = elemRef.current.offsetHeight;
+        window.parent.postMessage(
+          { type: "contentHeight", height: contentHeight },
+          "http://127.0.0.1:5500"
+        );
+      }
+    });
+
+    // Don't foget cleanup!
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className={`${languageClass}`}>
       <HeroSection />
       <Aside>
-        <Routes>
-          <Route path="overview" element={<OverviewPage />}>
-            <Route path="" element={<CompanyOverview />} />
-            <Route path="market-data" element={<MarketData />} />
-            <Route
-              path="financial-ratios"
-              element={<FinancialRatiosSection />}
-            />
-            <Route path="corporate-actions" element={<CorporateActions />} />
-          </Route>
+        <div ref={elemRef}>
+          <Routes>
+            <Route path="overview" element={<OverviewPage />}>
+              <Route path="" element={<CompanyOverview />} />
+              <Route path="market-data" element={<MarketData />} />
+              <Route
+                path="financial-ratios"
+                element={<FinancialRatiosSection />}
+              />
+              <Route path="corporate-actions" element={<CorporateActions />} />
+            </Route>
 
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="chart" element={<ChartPage />} />
-          <Route path="financialRatios" element={<FinancialRatiosPage />} />
-          <Route path="negotiatedDeals" element={<NegotiatedDealsPage />} />
-          <Route path="contact" element={<ContactUs />} />
-        </Routes>
+            <Route path="profile" element={<ProfilePage />} />
+            <Route path="chart" element={<ChartPage />} />
+            <Route path="financialRatios" element={<FinancialRatiosPage />} />
+            <Route path="negotiatedDeals" element={<NegotiatedDealsPage />} />
+            <Route path="contact" element={<ContactUs />} />
+          </Routes>
+        </div>
       </Aside>
       <Footer />
     </div>
