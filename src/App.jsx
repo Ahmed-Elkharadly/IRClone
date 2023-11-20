@@ -49,13 +49,11 @@ function App() {
   }, []);
 
   useLayoutEffect(() => {
-    window.addEventListener("message", (event) => {
       // Respond with the content height
       window.parent.postMessage(
         { type: "contentHeight", height: pageheight },
         "http://127.0.0.1:5500"
       );
-    });
     console.log("Hello", pageheight);
   }, [pageheight]);
 
