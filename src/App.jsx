@@ -37,25 +37,25 @@ function App() {
   const elemRef = useRef(null);
   const [pageheight, setHeight] = useState(undefined);
 
-  useEffect(() => {
-    if (!elemRef.current) return;
-    const resizeListener = () => {
-      setHeight(elemRef.current.offsetHeight);
-    };
-    const observer = new ResizeObserver(resizeListener);
-    observer.observe(elemRef.current);
-    // Don't foget cleanup!
-    return () => observer.disconnect();
-  }, []);
+  // useEffect(() => {
+  //   if (!elemRef.current) return;
+  //   const resizeListener = () => {
+  //     setHeight(elemRef.current.offsetHeight);
+  //   };
+  //   const observer = new ResizeObserver(resizeListener);
+  //   observer.observe(elemRef.current);
+  //   // Don't foget cleanup!
+  //   return () => observer.disconnect();
+  // }, []);
 
-  useLayoutEffect(() => {
-      // Respond with the content height
-      window.parent.postMessage(
-        { type: "contentHeight", height: pageheight },
-        "http://127.0.0.1:5500"
-      );
-    console.log("Hello", pageheight);
-  }, [pageheight]);
+  // useLayoutEffect(() => {
+  //     // Respond with the content height
+  //     window.parent.postMessage(
+  //       { type: "contentHeight", height: pageheight },
+  //       "http://127.0.0.1:5500"
+  //     );
+  //   console.log("Hello", pageheight);
+  // }, [pageheight]);
 
   return (
     <div className={`${languageClass}`} ref={elemRef}>
