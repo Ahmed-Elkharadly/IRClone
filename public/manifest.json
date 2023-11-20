@@ -3,12 +3,6 @@
   "name": "Standard IR",
   "icons": [
     {
-      "src": "./apple-touch-icon.png",
-      "sizes": "196x196",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
       "src": "./logo192.png",
       "type": "image/png",
       "sizes": "192x192"
@@ -29,7 +23,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "https://ir-clone.vercel.app/",
+  "start_url": "../index.html",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
